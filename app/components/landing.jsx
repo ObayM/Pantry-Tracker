@@ -8,7 +8,7 @@ const LandingPage = () => {
   const [activeTab, setActiveTab] = useState('login');
 
   return (
-    <div style={{minHeight:'calc(100vh - 64px)'}} className="bg-gradient-to-br from-indigo-500 to-purple-600 flex flex-col items-center  justify-evenly px-4 sm:px-6 lg:px-8">
+    <div style={{minHeight:'calc(100vh - (64px + 88px)'}} className="bg-gradient-to-br from-indigo-500 to-purple-600 flex flex-col items-center  justify-evenly px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="mt-6 text-4xl font-extrabold text-gray-900 animate-pulse">
             Welcome to Pantry Tracker
