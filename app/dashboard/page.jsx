@@ -1,7 +1,5 @@
 'use client'
 
-import Navbar from '../components/navbar.jsx'
-import Footer from '../components/footer.jsx'
 import React, { useState, useEffect } from 'react';
 import { firestore } from './firebase.js';
 import {
@@ -74,7 +72,6 @@ function Tracker() {
 
   return (
     <>
-    <Navbar />
     <div style={{ minHeight: 'calc(100vh - (64px + 88px)' }} className="bg-gradient-to-br from-indigo-500 to-purple-600 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
         <div className="p-8">
@@ -162,8 +159,6 @@ function Tracker() {
         )}
       </div>
     </div>
-    <Footer />
-
     </>
   );
 }

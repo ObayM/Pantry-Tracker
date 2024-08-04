@@ -2,6 +2,11 @@
 import React, { useState } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
+import { UserAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
+import useAuth from "../books/useAuth.js";
+
+// import Spinner from '../components/Spinner.jsx';
 
 const CustomButton = ({ children, className, ...props }) => (
   <button
@@ -19,6 +24,9 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const { user, loading, handleSignIn, handleSignOut } = useAuth();
+
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +41,20 @@ const Navbar = () => {
             <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Home</Link>
             <Link href="/contact" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Contact Us</Link>
             <Link href="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Dashboard</Link>
-            <CustomButton className="ml-4"><Link href="/user"> Login / Signup</Link></CustomButton>
+            <CustomButton className="ml-4">
+              
+              {loading ? (
+              <p>Loading</p>
+            ) : user ? (
+              <Link href="/profile">My Profile</Link>
+              
+            ) : (
+              <button
+              onClick={() => handleSignIn()}
+              type="button">Login / Signup
+              </button>
+            )}
+              </CustomButton>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
             <button
