@@ -1,5 +1,5 @@
-'use client'
 
+'use client'
 import React, { useState, useEffect } from 'react';
 import { firestore } from './firebase.js';
 import {
@@ -11,13 +11,15 @@ import {
   deleteDoc,
   getDoc,
 } from 'firebase/firestore';
-import { PlusCircle, MinusCircle, Trash2, BarChart2 } from 'lucide-react';
+import { PlusCircle, MinusCircle, Trash2, BarChart2, Search } from 'lucide-react';
 
 function Tracker() {
   const [inventory, setInventory] = useState([]);
+  const [filteredInventory, setFilteredInventory] = useState([]);
   const [itemName, setItemName] = useState('');
   const [itemCategory, setItemCategory] = useState('');
   const [showChart, setShowChart] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const updateInventory = async () => {
     const snapshot = query(collection(firestore, 'inventory'));
@@ -27,11 +29,21 @@ function Tracker() {
       inventoryList.push({ name: doc.id, ...doc.data() });
     });
     setInventory(inventoryList);
+    setFilteredInventory(inventoryList);
   };
 
   useEffect(() => {
     updateInventory();
   }, []);
+
+  useEffect(() => {
+    const filtered = inventory.filter(
+      item => 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredInventory(filtered);
+  }, [searchTerm, inventory]);
 
   const addItem = async (item, category) => {
     const docRef = doc(collection(firestore, 'inventory'), item);
@@ -71,8 +83,7 @@ function Tracker() {
   };
 
   return (
-    <>
-    <div style={{ minHeight: 'calc(100vh - (64px + 88px)' }} className="bg-gradient-to-br from-indigo-500 to-purple-600 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
         <div className="p-8">
           <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Inventory Tracker</h1>
@@ -104,8 +115,18 @@ function Tracker() {
               Add Item
             </button>
           </div>
+          <div className="relative mb-4">
+            <input
+              type="text"
+              placeholder="Search items..."
+              className="w-full p-2 pl-10 border rounded"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
+          </div>
           <div className="space-y-4">
-            {inventory.map(({ name, quantity, category }) => (
+            {filteredInventory.map(({ name, quantity, category }) => (
               <div
                 key={name}
                 className={`${getRandomColor()} p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105`}
@@ -159,7 +180,6 @@ function Tracker() {
         )}
       </div>
     </div>
-    </>
   );
 }
 
