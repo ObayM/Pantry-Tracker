@@ -1,5 +1,5 @@
 import React from 'react';
-import { Twitter, Instagram, Github, Linkedin } from 'lucide-react';
+import { Facebook, Instagram, Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center space-y-4">
           <div className="flex space-x-4">
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="transform transition-transform duration-300 hover:scale-110 hover:text-blue-400">
-              <Twitter size={20} />
+            <a href="https://www.facebook.com/obay.dev" target="_blank" rel="noopener noreferrer" className="transform transition-transform duration-300 hover:scale-110 hover:text-blue-400">
+              <Facebook size={20} />
             </a>
             <a href="https://instagram.com/obay.dev" target="_blank" rel="noopener noreferrer" className="transform transition-transform duration-300 hover:scale-110 hover:text-pink-400">
               <Instagram size={20} />

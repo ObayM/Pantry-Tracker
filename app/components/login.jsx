@@ -11,7 +11,7 @@ const LoginComponent = () => {
   return (
 
     <div className="space-y-4">
-      {/* <div>
+      <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           Email
         </label>
@@ -67,7 +67,7 @@ const LoginComponent = () => {
           <div className="relative flex justify-center text-sm">
             <span className="px-2 bg-white text-gray-500">Or continue with</span>
           </div>
-        </div> */}
+        </div>
 
         <div className="mt-6">
           <button
@@ -81,11 +81,11 @@ const LoginComponent = () => {
               <path d="M5.08857 11.9169C4.66969 10.6749 4.66969 9.33008 5.08857 8.08811V5.51233H1.76688C0.348541 8.33798 0.348541 11.667 1.76688 14.4927L5.08857 11.9169V11.9169Z" fill="#FBBC04"/>
               <path d="M10.7019 3.95805C12.1276 3.936 13.5055 4.47247 14.538 5.45722L17.393 2.60218C15.5852 0.904587 13.1858 -0.0287217 10.7019 0.000673888C6.92087 0.000673888 3.46322 2.13185 1.76562 5.51234L5.08732 8.08813C5.87733 5.71811 8.09302 3.95805 10.7019 3.95805V3.95805Z" fill="#EA4335"/>
             </svg>
-            Sign in / Sign up with Google
+            Sign in with Google
           </button>
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 

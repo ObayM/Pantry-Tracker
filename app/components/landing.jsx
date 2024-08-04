@@ -18,7 +18,7 @@ const LandingPage = () => {
           </p>
           <div className="mt-8 flex justify-center">
           <a
-            href="https://github.com/yourusername/pantry-tracker"
+            href="https://github.com/obayM/pantry-Tracker/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors duration-300"
